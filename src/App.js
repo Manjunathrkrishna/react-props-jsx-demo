@@ -1,23 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import Cmpone from './components/Cmpone'; // ✅ Correct import
+import Cmptwo from './components/Cmptwo'; // ✅ Correct import
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <div className="app-wrapper">
+          <nav className="navbar">
+            <Link to="/home">Home</Link>
+            {/* <Link to="/">Home</Link> */}
+          </nav>
+
+          <div className="page-wrapper">
+            <Routes>
+              <Route path="/" element={<Cmpone />} />
+               <Route path="/home" element={<Cmptwo />} />
+            </Routes>
+          </div>
+        </div>
+      </Router>
     </div>
   );
 }
